@@ -1,0 +1,20 @@
+이수백
+
+1. 직업이 MANAGER의 경우 sal*1.15 나머지는 sal*1.1로 정해지는 모든 정보를 도출하시오
+2. 내년 1월1일에 모든 직원 일괄적으로 진급을 하므로 오늘부터 진급일까지 남은 개월 수를 계산하고,
+   오늘 날짜를 요일('yyyy-mm-dd dy')까지 나오게 변경하시오.
+
+답안
+1 - select sal, job, decode(job, 'MANAGER', sal*1.15,
+                                            sal*1.1)
+    from emp;
+2 - select months_between(sysdate, '2021-01-01'), to_char(sysdate, 'yyyy-mm-dd dy')
+    from dual;
+
+김수양
+1. 부서가 20번 부서이고 급여가 1800이하인 사람의 이름, 부서, 월급(sal)을 출력하라
+2. 이름의 첫글자가 S로 시작하거나 부서번호가 20인 사람의 사원번호, 이름 부서번호를 출력하세요
+
+답안
+1. select ename, deptno, sal from emp where deptno=20 and sal<=1800;
+2. select empno, deptno from emp where ename like 'S%' or deptno=20;
